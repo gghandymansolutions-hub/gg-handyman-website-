@@ -160,7 +160,13 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 /* SERVICES */
 .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1400px; margin: 0 auto; }
 @media (max-width: 900px) { .services { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
-@media (max-width: 480px) { .services { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .service { aspect-ratio: 1 / 1; padding: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .service p { display: none; }
+  .service .icon { width: 36px; height: 36px; font-size: 13px; margin-bottom: 10px; }
+  .service h3 { font-size: 20px; margin-bottom: 0; line-height: 1.1; }
+}
 .service {
   padding: 36px 28px; border-radius: 18px;
   background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
