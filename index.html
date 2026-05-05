@@ -158,7 +158,9 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .section-title .accent { color: var(--gold); }
 
 /* SERVICES */
-.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; max-width: 1400px; margin: 0 auto; }
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1400px; margin: 0 auto; }
+@media (max-width: 900px) { .services { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+@media (max-width: 480px) { .services { grid-template-columns: 1fr; } }
 .service {
   padding: 36px 28px; border-radius: 18px;
   background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
