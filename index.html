@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-0: #0a0a0c;
-  --bg-1: #121215;
-  --bg-2: #1a1a1f;
+  --bg-0: #f1ebd8;
+  --bg-1: #ebe4cc;
+  --bg-2: #e0d8bb;
   --gold: #f5c518;
   --gold-soft: #ffd84d;
   --ink: #0c0c0e;
-  --line: rgba(255,255,255,0.08);
-  --text: #e8e8ea;
-  --muted: #8a8a93;
+  --line: rgba(12,12,14,0.10);
+  --text: #1a1a1c;
+  --muted: #5a5a60;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: auto; }
@@ -47,7 +47,7 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   padding: 22px 48px;
   backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-  background: rgba(10,10,12,0.45);
+  background: rgba(241,235,216,0.65);
   border-bottom: 1px solid var(--line);
 }
 nav .brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.18em; font-size: 18px; color: var(--gold); }
@@ -83,14 +83,14 @@ nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,19
   background-image: url('assets/team.jpg');
   background-size: cover; background-position: center 35%;
   opacity: 0; transform: scale(1.15);
-  filter: brightness(0.55) contrast(1.05); z-index: 1;
+  filter: brightness(0.95) contrast(1.0) saturate(0.92); z-index: 1;
   will-change: opacity, transform;
 }
 .team-bg::after {
   content: ''; position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, rgba(10,10,12,0.45) 0%, transparent 30%, transparent 70%, rgba(10,10,12,0.85) 100%),
-    linear-gradient(90deg, rgba(10,10,12,0.5) 0%, transparent 50%, rgba(10,10,12,0.5) 100%);
+    linear-gradient(180deg, rgba(241,235,216,0.65) 0%, transparent 30%, transparent 70%, rgba(241,235,216,0.85) 100%),
+    linear-gradient(90deg, rgba(241,235,216,0.5) 0%, transparent 50%, rgba(241,235,216,0.5) 100%);
 }
 .logo-stage {
   position: relative; z-index: 3;
@@ -100,10 +100,10 @@ nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,19
 .logo-card {
   position: relative; width: 100%; height: 100%;
   border-radius: 28px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+  background: linear-gradient(145deg, rgba(12,12,14,0.08), rgba(12,12,14,0.02));
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(245,197,24,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  border: 1px solid rgba(12,12,14,0.10);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 8px 24px rgba(245,197,24,0.20), inset 0 1px 0 rgba(255,255,255,0.6);
   overflow: hidden; transform-style: preserve-3d;
   will-change: transform, border-radius;
 }
@@ -161,7 +161,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; max-width: 1400px; margin: 0 auto; }
 .service {
   padding: 36px 28px; border-radius: 18px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  background: linear-gradient(145deg, rgba(12,12,14,0.05), rgba(12,12,14,0.02));
   border: 1px solid var(--line); backdrop-filter: blur(10px);
   transition: transform 0.4s ease, border-color 0.4s ease;
 }
@@ -197,7 +197,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .about-photos { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 14px; }
 .about-photo {
   border-radius: 18px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  background: linear-gradient(145deg, rgba(12,12,14,0.05), rgba(12,12,14,0.02));
   border: 1px solid var(--line);
   overflow: hidden; position: relative; cursor: pointer;
   transition: transform 0.4s ease;
@@ -209,7 +209,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 8px; color: var(--muted); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-  background: linear-gradient(145deg, rgba(245,197,24,0.08), rgba(255,255,255,0.02));
+  background: linear-gradient(145deg, rgba(245,197,24,0.08), rgba(12,12,14,0.03));
 }
 .about-photo .placeholder svg { width: 32px; height: 32px; opacity: 0.4; }
 .about-photo[data-loaded="true"] .placeholder { display: none; }
@@ -223,7 +223,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .mission-wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .mission-img {
   border-radius: 24px; overflow: hidden; aspect-ratio: 4/5;
-  background: linear-gradient(145deg, rgba(245,197,24,0.1), rgba(255,255,255,0.02));
+  background: linear-gradient(145deg, rgba(245,197,24,0.1), rgba(12,12,14,0.03));
   border: 1px solid var(--line); position: relative;
   background-size: cover; background-position: center;
 }
@@ -244,7 +244,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .reviews-header { display: flex; align-items: center; gap: 24px; margin-bottom: 60px; flex-wrap: wrap; justify-content: space-between; }
 .google-badge {
   display: inline-flex; align-items: center; gap: 14px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+  background: rgba(12,12,14,0.05); border: 1px solid var(--line);
   padding: 14px 24px; border-radius: 999px; backdrop-filter: blur(10px);
 }
 .google-logo-svg { width: 24px; height: 24px; flex-shrink: 0; }
@@ -256,7 +256,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
 .review-card {
   padding: 32px 28px; border-radius: 18px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  background: linear-gradient(145deg, rgba(12,12,14,0.05), rgba(12,12,14,0.02));
   border: 1px solid var(--line); backdrop-filter: blur(10px);
   display: flex; flex-direction: column; gap: 16px;
   transition: transform 0.4s, border-color 0.4s;
@@ -295,7 +295,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
   position: relative; width: 100%; height: 520px;
   border-radius: 24px; overflow: hidden;
   border: 1px solid var(--line);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
   background: var(--bg-1);
 }
 .map-container iframe {
@@ -304,7 +304,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 }
 .map-pin-info {
   position: absolute; top: 20px; left: 20px; z-index: 3;
-  background: rgba(10,10,12,0.85); backdrop-filter: blur(14px);
+  background: rgba(241,235,216,0.85); backdrop-filter: blur(14px);
   border: 1px solid var(--line);
   padding: 18px 22px; border-radius: 14px;
   display: flex; align-items: center; gap: 14px; pointer-events: none;
@@ -402,7 +402,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 }
 .service-tile {
   position: relative; padding: 24px 20px; border-radius: 16px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  background: linear-gradient(145deg, rgba(12,12,14,0.05), rgba(12,12,14,0.02));
   border: 1px solid var(--line); cursor: pointer;
   transition: all 0.3s ease;
   display: flex; flex-direction: column; gap: 10px; text-align: left;
@@ -438,13 +438,13 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 }
 .form-field label .req { color: var(--gold); }
 .form-field input, .form-field select, .form-field textarea {
-  background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+  background: rgba(12,12,14,0.04); border: 1px solid var(--line);
   border-radius: 12px; padding: 14px 16px; color: var(--text);
   font-family: 'Manrope', sans-serif; font-size: 14px;
   transition: border-color 0.25s, background 0.25s; width: 100%;
 }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
-  outline: none; border-color: var(--gold); background: rgba(255,255,255,0.05);
+  outline: none; border-color: var(--gold); background: rgba(12,12,14,0.06);
 }
 .form-field textarea { resize: vertical; min-height: 130px; }
 .form-field select {
@@ -458,7 +458,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .form-check {
   display: flex; gap: 12px; align-items: flex-start;
   padding: 16px; border: 1px solid var(--line); border-radius: 12px;
-  background: rgba(255,255,255,0.02); cursor: pointer;
+  background: rgba(12,12,14,0.03); cursor: pointer;
   transition: border-color 0.25s;
 }
 .form-check:hover { border-color: rgba(245,197,24,0.3); }
@@ -473,7 +473,7 @@ section.content { position: relative; z-index: 10; background: var(--bg-0); padd
 .radio-card {
   display: flex; align-items: center; gap: 14px;
   padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px;
-  background: rgba(255,255,255,0.02); cursor: pointer;
+  background: rgba(12,12,14,0.03); cursor: pointer;
   transition: all 0.25s ease;
 }
 .radio-card:hover { border-color: rgba(245,197,24,0.3); }
