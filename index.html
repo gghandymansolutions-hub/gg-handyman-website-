@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GG Handyman Solutions LLC — Houston, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #0a0a0c;
+  --bg-1: #121215;
+  --bg-2: #1a1a1f;
+  --gold: #f5c518;
+  --gold-soft: #ffd84d;
+  --ink: #0c0c0e;
+  --line: rgba(255,255,255,0.08);
+  --text: #e8e8ea;
+  --muted: #8a8a93;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 48px;
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(10,10,12,0.45);
+  border-bottom: 1px solid var(--line);
+}
+nav .brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.18em; font-size: 18px; color: var(--gold); }
+nav .brand span { color: var(--text); }
+nav ul { display: flex; gap: 36px; list-style: none; }
+nav ul a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; opacity: 0.75; transition: opacity 0.25s, color 0.25s; }
+nav ul a:hover { opacity: 1; color: var(--gold); }
+nav .cta {
+  background: var(--gold); color: var(--ink); padding: 10px 22px;
+  border-radius: 999px; font-weight: 600; font-size: 13px;
+  text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
+}
+nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,197,24,0.35); }
+
+@media (max-width: 768px) { nav { padding: 16px 20px; } nav ul { display: none; } }
+
+/* HERO */
+.hero { position: relative; height: 250vh; width: 100%; }
+.morph-stage {
+  position: sticky; top: 0; height: 100vh; width: 100%;
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.morph-stage::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(245,197,24,0.08), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 75%, rgba(245,197,24,0.05), transparent 60%),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1));
+  z-index: 0;
+}
+.team-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/team.jpg');
+  background-size: cover; background-position: center 35%;
+  opacity: 0; transform: scale(1.15);
+  filter: brightness(0.55) contrast(1.05); z-index: 1;
+  will-change: opacity, transform;
+}
+.team-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,12,0.45) 0%, transparent 30%, transparent 70%, rgba(10,10,12,0.85) 100%),
+    linear-gradient(90deg, rgba(10,10,12,0.5) 0%, transparent 50%, rgba(10,10,12,0.5) 100%);
+}
+.logo-stage {
+  position: relative; z-index: 3;
+  width: clamp(260px, 38vw, 480px); aspect-ratio: 1 / 1;
+  perspective: 1200px; will-change: transform;
+}
+.logo-card {
+  position: relative; width: 100%; height: 100%;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(245,197,24,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  overflow: hidden; transform-style: preserve-3d;
+  will-change: transform, border-radius;
+}
+.logo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.logo-glow {
+  position: absolute; inset: -8%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,197,24,0.35), transparent 65%);
+  filter: blur(40px); z-index: -1; opacity: 0.7; will-change: opacity;
+}
+.hero-text { position: absolute; z-index: 4; pointer-events: none; will-change: opacity, transform; }
+.hero-text.top {
+  top: 14%; left: 50%; transform: translateX(-50%); text-align: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 7vw, 92px);
+  letter-spacing: 0.04em; line-height: 0.95; color: var(--text);
+}
+.hero-text.top .accent { color: var(--gold); }
+.hero-text.top .small {
+  display: block; font-family: 'Manrope', sans-serif; font-weight: 300;
+  font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.4em;
+  margin-bottom: 18px; color: var(--muted);
+}
+.hero-text.bottom {
+  bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; opacity: 0;
+}
+.hero-text.bottom h2 {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 64px);
+  letter-spacing: 0.05em; color: var(--gold); line-height: 1;
+}
+.hero-text.bottom p {
+  font-size: clamp(13px, 1.1vw, 16px); color: var(--text);
+  letter-spacing: 0.06em; font-weight: 300; margin-top: 12px;
+}
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 5;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0.6; font-size: 11px; letter-spacing: 0.4em; color: var(--muted);
+  animation: bob 2.5s ease-in-out infinite;
+}
+.scroll-hint .line { width: 1px; height: 30px; background: linear-gradient(180deg, var(--muted), transparent); }
+@keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
+
+/* SECTIONS */
+section.content { position: relative; z-index: 10; background: var(--bg-0); padding: 140px 48px; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.5em; color: var(--gold);
+  font-weight: 600; text-transform: uppercase; margin-bottom: 18px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 88px);
+  letter-spacing: 0.02em; line-height: 0.95; margin-bottom: 60px; max-width: 900px;
+}
+.section-title .accent { color: var(--gold); }
+
+/* SERVICES */
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; max-width: 1400px; margin: 0 auto; }
+.service {
+  padding: 36px 28px; border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--line); backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.service:hover { transform: translateY(-4px); border-color: rgba(245,197,24,0.3); }
+.service .icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(145deg, var(--gold), #d9a90c);
+  margin-bottom: 22px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; color: var(--ink);
+  font-size: 20px; letter-spacing: 0.05em;
+}
+.service h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; margin-bottom: 10px; }
+.service p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ABOUT US */
+.about-wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+.about-text { max-width: 560px; }
+.about-text p { font-size: 17px; line-height: 1.75; color: var(--text); font-weight: 300; margin-bottom: 32px; }
+.about-text p strong { color: var(--gold); font-weight: 600; }
+.book-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--gold); color: var(--ink);
+  padding: 18px 36px; border-radius: 999px;
+  font-weight: 700; font-size: 14px; letter-spacing: 0.18em;
+  text-decoration: none; text-transform: uppercase;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 30px rgba(245,197,24,0.25);
+}
+.book-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(245,197,24,0.5); }
+.book-btn::after { content: '→'; font-size: 18px; transition: transform 0.3s; }
+.book-btn:hover::after { transform: translateX(4px); }
+
+.about-photos { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 14px; }
+.about-photo {
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--line);
+  overflow: hidden; position: relative; cursor: pointer;
+  transition: transform 0.4s ease;
+  background-size: cover; background-position: center;
+}
+.about-photo:hover { transform: scale(1.02); }
+.about-photo:nth-child(1) { grid-row: span 2; }
+.about-photo .placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; color: var(--muted); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  background: linear-gradient(145deg, rgba(245,197,24,0.08), rgba(255,255,255,0.02));
+}
+.about-photo .placeholder svg { width: 32px; height: 32px; opacity: 0.4; }
+.about-photo[data-loaded="true"] .placeholder { display: none; }
+
+@media (max-width: 900px) {
+  .about-wrap { grid-template-columns: 1fr; gap: 50px; }
+  .about-photos { grid-template-rows: 180px 180px; }
+}
+
+/* MISSION */
+.mission-wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.mission-img {
+  border-radius: 24px; overflow: hidden; aspect-ratio: 4/5;
+  background: linear-gradient(145deg, rgba(245,197,24,0.1), rgba(255,255,255,0.02));
+  border: 1px solid var(--line); position: relative;
+  background-size: cover; background-position: center;
+}
+.mission-img .placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; color: var(--muted); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.mission-img .placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
+.mission-img[data-loaded="true"] .placeholder { display: none; }
+.mission-text p { font-size: 17px; line-height: 1.75; color: var(--text); font-weight: 300; }
+.mission-text p strong { color: var(--gold); font-weight: 600; }
+
+@media (max-width: 900px) { .mission-wrap { grid-template-columns: 1fr; } }
+
+/* REVIEWS */
+.reviews-section { background: linear-gradient(180deg, var(--bg-0), var(--bg-1)); }
+.reviews-header { display: flex; align-items: center; gap: 24px; margin-bottom: 60px; flex-wrap: wrap; justify-content: space-between; }
+.google-badge {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+  padding: 14px 24px; border-radius: 999px; backdrop-filter: blur(10px);
+}
+.google-logo-svg { width: 24px; height: 24px; flex-shrink: 0; }
+.google-badge .text { display: flex; flex-direction: column; gap: 2px; }
+.google-badge .label { font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.google-badge .stars { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; }
+.google-badge .stars-icons { color: #fbbc05; letter-spacing: 1px; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
+.review-card {
+  padding: 32px 28px; border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--line); backdrop-filter: blur(10px);
+  display: flex; flex-direction: column; gap: 16px;
+  transition: transform 0.4s, border-color 0.4s;
+}
+.review-card:hover { transform: translateY(-4px); border-color: rgba(245,197,24,0.3); }
+.review-card .review-stars { color: #fbbc05; font-size: 16px; letter-spacing: 2px; }
+.review-card .review-text { font-size: 15px; line-height: 1.65; color: var(--text); font-weight: 300; flex: 1; }
+.review-card .reviewer { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.review-card .avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(145deg, var(--gold), #d9a90c);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); font-weight: 700; font-size: 15px; flex-shrink: 0;
+}
+.review-card .reviewer-info { display: flex; flex-direction: column; }
+.review-card .reviewer-name { font-weight: 600; font-size: 14px; }
+.review-card .reviewer-meta { font-size: 12px; color: var(--muted); }
+
+.see-all-reviews { margin-top: 50px; text-align: center; }
+.see-all-reviews a {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--gold); text-decoration: none; font-size: 13px;
+  letter-spacing: 0.2em; font-weight: 600; text-transform: uppercase;
+  padding: 14px 28px; border: 1px solid var(--gold); border-radius: 999px;
+  transition: background 0.3s, color 0.3s;
+}
+.see-all-reviews a:hover { background: var(--gold); color: var(--ink); }
+
+/* SERVICE AREA + MAP */
+.service-area-wrap { max-width: 1400px; margin: 0 auto; }
+.service-area-text { max-width: 800px; margin-bottom: 60px; }
+.service-area-text p { font-size: 17px; line-height: 1.75; color: var(--text); font-weight: 300; }
+.service-area-text p strong { color: var(--gold); font-weight: 600; }
+
+.map-container {
+  position: relative; width: 100%; height: 520px;
+  border-radius: 24px; overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  background: var(--bg-1);
+}
+.map-container iframe {
+  width: 100%; height: 100%; border: 0;
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.6);
+}
+.map-pin-info {
+  position: absolute; top: 20px; left: 20px; z-index: 3;
+  background: rgba(10,10,12,0.85); backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  padding: 18px 22px; border-radius: 14px;
+  display: flex; align-items: center; gap: 14px; pointer-events: none;
+}
+.map-pin-info .dot {
+  width: 12px; height: 12px; border-radius: 50%; background: var(--gold);
+  box-shadow: 0 0 0 6px rgba(245,197,24,0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(245,197,24,0.2); }
+  50% { box-shadow: 0 0 0 12px rgba(245,197,24,0.05); }
+}
+.map-pin-info .info-text { display: flex; flex-direction: column; }
+.map-pin-info .info-text .label { font-size: 10px; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; }
+.map-pin-info .info-text .city { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.05em; color: var(--gold); }
+
+/* ============== CONTACT FORM ============== */
+.contact-section { background: linear-gradient(180deg, var(--bg-1), var(--bg-0)); position: relative; }
+.contact-section::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 90% 20%, rgba(245,197,24,0.08), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(245,197,24,0.05), transparent 60%);
+  pointer-events: none;
+}
+.form-wrap { max-width: 920px; margin: 0 auto; position: relative; z-index: 2; }
+
+.form-progress {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 60px; position: relative; padding: 0 10px;
+}
+.form-progress::before {
+  content: ''; position: absolute; left: 30px; right: 30px; top: 22px;
+  height: 2px; background: var(--line); z-index: 0;
+}
+.form-progress::after {
+  content: ''; position: absolute; left: 30px; top: 22px;
+  height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  z-index: 1; width: 0%; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form-progress[data-step="1"]::after { width: 0%; }
+.form-progress[data-step="2"]::after { width: calc(25% - 15px); }
+.form-progress[data-step="3"]::after { width: calc(50% - 15px); }
+.form-progress[data-step="4"]::after { width: calc(75% - 15px); }
+.form-progress[data-step="5"]::after { width: calc(100% - 60px); }
+
+.progress-step {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  flex: 0 0 auto;
+}
+.progress-step .circle {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--bg-1); border: 2px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 16px;
+  letter-spacing: 0.05em; color: var(--muted);
+  transition: all 0.4s ease;
+}
+.progress-step .step-label {
+  font-size: 10px; letter-spacing: 0.18em; color: var(--muted);
+  text-transform: uppercase; font-weight: 500;
+  text-align: center; max-width: 90px; transition: color 0.4s;
+}
+.progress-step.active .circle {
+  background: var(--gold); border-color: var(--gold); color: var(--ink);
+  box-shadow: 0 0 0 6px rgba(245,197,24,0.15), 0 8px 20px rgba(245,197,24,0.3);
+}
+.progress-step.active .step-label { color: var(--gold); }
+.progress-step.complete .circle {
+  background: var(--gold); border-color: var(--gold); color: var(--ink);
+}
+.progress-step.complete .circle .num { display: none; }
+.progress-step.complete .circle::after { content: '✓'; font-size: 18px; }
+
+.form-step { display: none; animation: fadeSlide 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.form-step.active { display: block; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.step-header { margin-bottom: 36px; }
+.step-header h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: 0.02em; line-height: 1; margin-bottom: 10px;
+}
+.step-header h3 .accent { color: var(--gold); }
+.step-header p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+.service-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px; margin-bottom: 30px;
+}
+.service-tile {
+  position: relative; padding: 24px 20px; border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--line); cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex; flex-direction: column; gap: 10px; text-align: left;
+}
+.service-tile:hover { border-color: rgba(245,197,24,0.4); transform: translateY(-2px); }
+.service-tile.selected {
+  background: linear-gradient(145deg, rgba(245,197,24,0.18), rgba(245,197,24,0.04));
+  border-color: var(--gold); box-shadow: 0 8px 30px rgba(245,197,24,0.2);
+}
+.service-tile.selected::before {
+  content: '✓'; position: absolute; top: 14px; right: 14px;
+  width: 22px; height: 22px; background: var(--gold); color: var(--ink);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.service-tile .tile-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(145deg, var(--gold), #d9a90c);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; color: var(--ink); font-size: 16px;
+}
+.service-tile h4 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.04em; }
+.service-tile p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-row.single { grid-template-columns: 1fr; }
+.form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+
+.form-field { display: flex; flex-direction: column; gap: 8px; }
+.form-field label {
+  font-size: 11px; letter-spacing: 0.2em; color: var(--muted);
+  text-transform: uppercase; font-weight: 600;
+}
+.form-field label .req { color: var(--gold); }
+.form-field input, .form-field select, .form-field textarea {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px 16px; color: var(--text);
+  font-family: 'Manrope', sans-serif; font-size: 14px;
+  transition: border-color 0.25s, background 0.25s; width: 100%;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: none; border-color: var(--gold); background: rgba(255,255,255,0.05);
+}
+.form-field textarea { resize: vertical; min-height: 130px; }
+.form-field select {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23f5c518' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center; padding-right: 44px;
+}
+.form-field select option { background: var(--bg-1); color: var(--text); }
+.phone-row { display: grid; grid-template-columns: 180px 1fr; gap: 10px; }
+
+.form-check {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 16px; border: 1px solid var(--line); border-radius: 12px;
+  background: rgba(255,255,255,0.02); cursor: pointer;
+  transition: border-color 0.25s;
+}
+.form-check:hover { border-color: rgba(245,197,24,0.3); }
+.form-check input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 2px;
+  accent-color: var(--gold); cursor: pointer; flex-shrink: 0;
+}
+.form-check .check-text { font-size: 13px; color: var(--text); line-height: 1.55; }
+.form-check .check-text strong { color: var(--gold); display: block; margin-bottom: 4px; font-weight: 600; }
+
+.radio-group { display: flex; flex-direction: column; gap: 10px; }
+.radio-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px;
+  background: rgba(255,255,255,0.02); cursor: pointer;
+  transition: all 0.25s ease;
+}
+.radio-card:hover { border-color: rgba(245,197,24,0.3); }
+.radio-card input[type="radio"] {
+  appearance: none; -webkit-appearance: none;
+  width: 20px; height: 20px; border: 2px solid var(--muted);
+  border-radius: 50%; cursor: pointer; flex-shrink: 0;
+  transition: border-color 0.25s; position: relative;
+}
+.radio-card input[type="radio"]:checked { border-color: var(--gold); }
+.radio-card input[type="radio"]:checked::after {
+  content: ''; position: absolute; inset: 3px;
+  background: var(--gold); border-radius: 50%;
+}
+.radio-card:has(input:checked) {
+  border-color: var(--gold); background: rgba(245,197,24,0.06);
+}
+.radio-card .radio-label { font-size: 14px; color: var(--text); flex: 1; }
+.radio-card .radio-label strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.radio-card .radio-label .price { color: var(--gold); font-weight: 600; }
+
+.file-upload {
+  border: 2px dashed var(--line); border-radius: 16px;
+  padding: 36px 20px; text-align: center; cursor: pointer;
+  transition: border-color 0.25s, background 0.25s; position: relative;
+}
+.file-upload:hover { border-color: var(--gold); background: rgba(245,197,24,0.03); }
+.file-upload input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.file-upload-icon {
+  width: 48px; height: 48px; margin: 0 auto 14px; border-radius: 12px;
+  background: linear-gradient(145deg, rgba(245,197,24,0.15), rgba(245,197,24,0.05));
+  display: flex; align-items: center; justify-content: center; color: var(--gold);
+}
+.file-upload p { font-size: 14px; color: var(--text); margin-bottom: 4px; font-weight: 500; }
+.file-upload p.hint { font-size: 12px; color: var(--muted); font-weight: 400; }
+.file-upload .file-list { margin-top: 14px; font-size: 12px; color: var(--gold); }
+
+.form-nav {
+  display: flex; justify-content: space-between; gap: 14px;
+  margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--line);
+}
+.form-nav button {
+  padding: 16px 32px; border-radius: 999px;
+  font-family: 'Manrope', sans-serif; font-weight: 600;
+  font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s ease; border: none;
+}
+.form-nav .btn-prev {
+  background: transparent; color: var(--text); border: 1px solid var(--line);
+}
+.form-nav .btn-prev:hover { border-color: var(--text); }
+.form-nav .btn-next, .form-nav .btn-submit {
+  background: var(--gold); color: var(--ink);
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-left: auto; box-shadow: 0 8px 24px rgba(245,197,24,0.25);
+}
+.form-nav .btn-next:hover, .form-nav .btn-submit:hover {
+  transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,197,24,0.4);
+}
+.form-nav .btn-next::after { content: '→'; font-size: 16px; }
+
+.form-success { display: none; text-align: center; padding: 60px 20px; }
+.form-success.active { display: block; animation: fadeSlide 0.6s; }
+.form-success .check-circle {
+  width: 80px; height: 80px; margin: 0 auto 24px; border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); font-size: 38px; font-weight: 700;
+  box-shadow: 0 0 0 12px rgba(245,197,24,0.2);
+}
+.form-success h3 {
+  font-family: 'Bebas Neue', sans-serif; font-size: 42px;
+  letter-spacing: 0.04em; margin-bottom: 14px;
+}
+.form-success p { color: var(--muted); font-size: 15px; max-width: 440px; margin: 0 auto; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .form-row, .form-row.triple { grid-template-columns: 1fr; }
+  .phone-row { grid-template-columns: 130px 1fr; }
+  .form-progress { padding: 0; }
+  .progress-step .circle { width: 36px; height: 36px; font-size: 14px; }
+  .progress-step .step-label { display: none; }
+  .form-nav button { padding: 14px 22px; font-size: 12px; }
+  .form-progress::before, .form-progress::after { top: 18px; }
+}
+
+/* FOOTER */
+footer { background: var(--bg-1); padding: 80px 48px 30px; border-top: 1px solid var(--line); position: relative; }
+.footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+.footer-brand .brand-big {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: 0.08em; color: var(--gold); margin-bottom: 14px; line-height: 1;
+}
+.footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 380px; }
+.footer-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.2em; color: var(--text); margin-bottom: 22px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.25s; }
+.footer-col ul a:hover { color: var(--gold); }
+
+.footer-bottom {
+  max-width: 1400px; margin: 0 auto; padding-top: 30px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px;
+}
+.footer-bottom p { color: var(--muted); font-size: 12px; letter-spacing: 0.05em; }
+.footer-bottom .social { display: flex; gap: 16px; }
+.footer-bottom .social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); text-decoration: none; transition: all 0.25s;
+}
+.footer-bottom .social a:hover { border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 768px) {
+  section.content { padding: 80px 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 60px 24px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">GG <span>HANDYMAN</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#service-area">Service Area</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <a href="#book" class="cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="morph-stage">
+    <div class="team-bg" id="teamBg"></div>
+
+    <div class="hero-text top" id="topText">
+      <span class="small">GG OPERATIONS LLC · HOUSTON, TX</span>
+      <div>REAL <span class="accent">SOLUTIONS</span></div>
+      <div>FOR YOUR HOME</div>
+    </div>
+
+    <div class="logo-stage" id="logoStage">
+      <div class="logo-glow" id="logoGlow"></div>
+      <div class="logo-card" id="logoCard">
+        <img src="assets/logo.png" alt="GG Handyman Solutions" id="logoImg" />
+      </div>
+    </div>
+
+    <div class="hero-text bottom" id="bottomText">
+      <h2>OUR TEAM IN ACTION</h2>
+      <p>Every job, hand-crafted · Every client, treated with care</p>
+    </div>
+
+    <div class="scroll-hint" id="scrollHint">
+      <span>SCROLL</span>
+      <div class="line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="content" id="services">
+  <div class="eyebrow">What we do</div>
+  <h2 class="section-title">Your home, <span class="accent">fixed</span> by experts.</h2>
+  <div class="services">
+    <div class="service"><div class="icon">01</div><h3>Handyman</h3><p>General repairs, furniture assembly, door adjustments, minor installations. Everything your home needs.</p></div>
+    <div class="service"><div class="icon">02</div><h3>Drywall</h3><p>Professional installation, repair, and finishing of drywall. Texturing, patching, and painting.</p></div>
+    <div class="service"><div class="icon">03</div><h3>Plumbing</h3><p>Leak repairs, faucet installation, water heaters and drains. Fast and clean service.</p></div>
+    <div class="service"><div class="icon">04</div><h3>Electrical</h3><p>Lighting, fan installation, outlets and residential electrical diagnosis.</p></div>
+    <div class="service"><div class="icon">05</div><h3>HVAC</h3><p>Maintenance, installation, and repair of air conditioning and heating systems.</p></div>
+    <div class="service"><div class="icon">06</div><h3>Subcontracting</h3><p>Coordination of specialized projects with our trusted certified subcontractor network.</p></div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section class="content" id="about">
+  <div class="about-wrap">
+    <div class="about-text">
+      <div class="eyebrow">About Us</div>
+      <h2 class="section-title" style="margin-bottom: 32px;">3 Years <span class="accent">Building Trust</span> in Houston.</h2>
+      <p>
+        At <strong>GG Handyman Solutions</strong>, we've been your go-to handymen in Houston for 3 years.
+        Licensed and insured, we specialize in everything from drywall to repairs and remodels.
+        With a commitment to quality craftsmanship and clear communication, we're here to transform
+        your space with precision and care.
+      </p>
+      <a href="#book" class="book-btn">Book Now</a>
+    </div>
+
+    <div class="about-photos">
+      <!-- To add a photo: set data-src="your-image-url.jpg" on each .about-photo -->
+      <div class="about-photo" data-src="">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+      <div class="about-photo" data-src="">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+      <div class="about-photo" data-src="">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR MISSION -->
+<section class="content" id="mission">
+  <div class="mission-wrap">
+    <div class="mission-img" data-src="">
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Mission Photo</span>
+      </div>
+    </div>
+    <div class="mission-text">
+      <div class="eyebrow">Our Mission</div>
+      <h2 class="section-title" style="margin-bottom: 32px;">Built on <span class="accent">trust</span>, growing with purpose.</h2>
+      <p>
+        Welcome to our trusted handyman services company, currently providing exceptional services
+        to <strong>Houston, TX</strong> and the surrounding areas. Our team of skilled professionals
+        is dedicated to delivering top-quality workmanship, and we're excited to announce that we
+        have plans to expand our services to other states across the country in the near future.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS -->
+<section class="content reviews-section" id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="eyebrow">Customer Reviews</div>
+      <h2 class="section-title" style="margin-bottom: 0;">What Houston <span class="accent">says about us</span>.</h2>
+    </div>
+    <div class="google-badge">
+      <svg class="google-logo-svg" viewBox="0 0 48 48">
+        <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+        <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+        <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+        <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+      </svg>
+      <div class="text">
+        <span class="label">Google Reviews</span>
+        <div class="stars"><span class="stars-icons">★★★★★</span><span>5.0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Gonzalo and his team did an amazing job with our drywall repairs. Professional, on time, and the finish was flawless. Highly recommend GG Handyman Solutions!"</p>
+      <div class="reviewer">
+        <div class="avatar">M</div>
+        <div class="reviewer-info"><span class="reviewer-name">Maria R.</span><span class="reviewer-meta">Local Guide · Houston, TX</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Honest pricing, clear communication and quality work. They handled multiple repairs in our home in one visit. Will definitely use them again."</p>
+      <div class="reviewer">
+        <div class="avatar">J</div>
+        <div class="reviewer-info"><span class="reviewer-name">James K.</span><span class="reviewer-meta">Houston, TX</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Best handyman service I've used in Houston. They installed our ceiling fan, fixed a leaking faucet and patched some drywall — all in one afternoon. Excellent!"</p>
+      <div class="reviewer">
+        <div class="avatar">A</div>
+        <div class="reviewer-info"><span class="reviewer-name">Ashley P.</span><span class="reviewer-meta">Houston, TX</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="see-all-reviews">
+    <a href="https://share.google/nGDZRsdjf3jk0lC5C" target="_blank" rel="noopener">
+      See all reviews on Google →
+    </a>
+  </div>
+</section>
+
+<!-- SERVICE AREA + MAP -->
+<section class="content" id="service-area">
+  <div class="service-area-wrap">
+    <div class="service-area-text">
+      <div class="eyebrow">Service Area</div>
+      <h2 class="section-title">Proudly serving <span class="accent">Houston</span>.</h2>
+      <p>
+        Welcome to our trusted handyman services company, currently providing exceptional services
+        to <strong>Houston, TX</strong> and the surrounding areas. Our team of skilled professionals
+        is dedicated to delivering top-quality workmanship, and we're excited to announce that we
+        have plans to expand our services to other states across the country in the near future.
+      </p>
+    </div>
+
+    <div class="map-container">
+      <div class="map-pin-info">
+        <div class="dot"></div>
+        <div class="info-text"><span class="label">Headquarters</span><span class="city">Houston, TX</span></div>
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d442639.7404045659!2d-95.73097!3d29.81738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="content contact-section" id="book">
+  <div class="form-wrap">
+    <div style="text-align:center; margin-bottom: 30px;">
+      <div class="eyebrow">Get a Quote</div>
+      <h2 class="section-title" style="margin: 0 auto 14px; max-width: 700px;">Contact <span class="accent">Us</span></h2>
+      <p style="color: var(--muted); font-size: 16px; max-width: 580px; margin: 0 auto;">Tell us about your project and we'll get back to you with a free estimate.</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="form-progress" id="formProgress" data-step="1">
+      <div class="progress-step active" data-step="1"><div class="circle"><span class="num">1</span></div><div class="step-label">Service</div></div>
+      <div class="progress-step" data-step="2"><div class="circle"><span class="num">2</span></div><div class="step-label">Contact</div></div>
+      <div class="progress-step" data-step="3"><div class="circle"><span class="num">3</span></div><div class="step-label">Address</div></div>
+      <div class="progress-step" data-step="4"><div class="circle"><span class="num">4</span></div><div class="step-label">Details</div></div>
+      <div class="progress-step" data-step="5"><div class="circle"><span class="num">5</span></div><div class="step-label">Review</div></div>
+    </div>
+
+    <form id="contactForm" novalidate>
+
+      <!-- ============== STEP 1: SERVICE TYPE ============== -->
+      <div class="form-step active" data-step="1">
+        <div class="step-header">
+          <h3>What service do you <span class="accent">need?</span></h3>
+          <p>Select the type of work you need help with. You can choose more than one.</p>
+        </div>
+        <div class="service-grid" id="serviceGrid">
+          <button type="button" class="service-tile" data-service="Handyman">
+            <div class="tile-icon">01</div>
+            <h4>Handyman</h4>
+            <p>General repairs and small jobs</p>
+          </button>
+          <button type="button" class="service-tile" data-service="Drywall">
+            <div class="tile-icon">02</div>
+            <h4>Drywall</h4>
+            <p>Install, patch, texture, paint</p>
+          </button>
+          <button type="button" class="service-tile" data-service="Plumbing">
+            <div class="tile-icon">03</div>
+            <h4>Plumbing</h4>
+            <p>Leaks, faucets, water heaters</p>
+          </button>
+          <button type="button" class="service-tile" data-service="Electrical">
+            <div class="tile-icon">04</div>
+            <h4>Electrical</h4>
+            <p>Lights, outlets, fans, diagnosis</p>
+          </button>
+          <button type="button" class="service-tile" data-service="HVAC">
+            <div class="tile-icon">05</div>
+            <h4>HVAC</h4>
+            <p>AC and heating service</p>
+          </button>
+          <button type="button" class="service-tile" data-service="Painting">
+            <div class="tile-icon">06</div>
+            <h4>Painting</h4>
+            <p>Interior and exterior</p>
+          </button>
+          <button type="button" class="service-tile" data-service="Remodeling">
+            <div class="tile-icon">07</div>
+            <h4>Remodeling</h4>
+            <p>Bathroom, kitchen, full rooms</p>
+          </button>
+          <button type="button" class="service-tile" data-service="Other">
+            <div class="tile-icon">08</div>
+            <h4>Other</h4>
+            <p>Tell us what you need</p>
+          </button>
+        </div>
+        <input type="hidden" name="services" id="servicesInput" />
+        <div class="form-nav">
+          <span></span>
+          <button type="button" class="btn-next" data-next="2">Continue</button>
+        </div>
+      </div>
+
+      <!-- ============== STEP 2: CONTACT INFO ============== -->
+      <div class="form-step" data-step="2">
+        <div class="step-header">
+          <h3>Tell us <span class="accent">who you are.</span></h3>
+          <p>We'll use this info to get back to you with your quote.</p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name</label>
+            <input type="text" name="firstName" />
+          </div>
+          <div class="form-field">
+            <label>Last Name</label>
+            <input type="text" name="lastName" />
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" required />
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Phone Number <span class="req">*</span></label>
+            <div class="phone-row">
+              <select name="phoneCountryCode" id="phoneCountryCode">
+                <!-- options injected by JS -->
+              </select>
+              <input type="tel" name="phone" placeholder="555 123 4567" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <label class="form-check">
+            <input type="checkbox" name="smsOptIn" />
+            <span class="check-text">
+              <strong>Sign up for SMS updates</strong>
+              By checking this box, you agree to receive automated emails and texts about promotions and service updates. You can opt out at any time.
+            </span>
+          </label>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-prev" data-prev="1">← Back</button>
+          <button type="button" class="btn-next" data-next="3">Continue</button>
+        </div>
+      </div>
+
+      <!-- ============== STEP 3: ADDRESS ============== -->
+      <div class="form-step" data-step="3">
+        <div class="step-header">
+          <h3>Where is the <span class="accent">work site?</span></h3>
+          <p>Please provide the address where you'd like us to perform the work.</p>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Address Line 1 <span class="req">*</span></label>
+            <input type="text" name="address1" placeholder="Street address" required />
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Address Line 2</label>
+            <input type="text" name="address2" placeholder="Apt, suite, unit (optional)" />
+          </div>
+        </div>
+
+        <div class="form-row triple">
+          <div class="form-field">
+            <label>City</label>
+            <input type="text" name="city" />
+          </div>
+          <div class="form-field">
+            <label>State / Province</label>
+            <input type="text" name="province" />
+          </div>
+          <div class="form-field">
+            <label>Zip Code</label>
+            <input type="text" name="zip" />
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Country</label>
+            <select name="country" id="countrySelect">
+              <option value="">- Country -</option>
+              <!-- options injected by JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-prev" data-prev="2">← Back</button>
+          <button type="button" class="btn-next" data-next="4">Continue</button>
+        </div>
+      </div>
+
+      <!-- ============== STEP 4: JOB DETAILS ============== -->
+      <div class="form-step" data-step="4">
+        <div class="step-header">
+          <h3>Project <span class="accent">details.</span></h3>
+          <p>The more info you share, the more accurate a quote we can provide.</p>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Detailed description of work requested <span class="req">*</span></label>
+            <textarea name="description" placeholder="Describe what needs to be done, where in the home, materials involved, etc." required></textarea>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>When would you like the work done? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="timeframe" value="As soon as possible" />
+                <div class="radio-label"><strong>As soon as possible</strong></div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="timeframe" value="In the next 2 weeks is fine" />
+                <div class="radio-label"><strong>In the next 2 weeks is fine</strong></div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="timeframe" value="No specific time frame" />
+                <div class="radio-label"><strong>We have no specific time frame</strong></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Photos of the area <span class="req">*</span></label>
+            <p style="font-size: 12px; color: var(--muted); margin-top: -4px; margin-bottom: 4px; line-height: 1.6;">
+              Take photographs of the area requiring repair, what you wish to install, or any images that could assist us in creating an accurate estimate.
+            </p>
+            <label class="file-upload" id="fileUpload">
+              <input type="file" name="photos" multiple accept="image/*" id="fileInput" />
+              <div class="file-upload-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+              <p>Click to upload images</p>
+              <p class="hint">PNG, JPG up to 10MB each</p>
+              <div class="file-list" id="fileList"></div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Any additional info you'd like us to know?</label>
+            <textarea name="additionalInfo" placeholder="Optional — anything else we should be aware of" style="min-height: 90px;"></textarea>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-prev" data-prev="3">← Back</button>
+          <button type="button" class="btn-next" data-next="5">Continue</button>
+        </div>
+      </div>
+
+      <!-- ============== STEP 5: PREFERENCES + SUBMIT ============== -->
+      <div class="form-step" data-step="5">
+        <div class="step-header">
+          <h3>Last <span class="accent">few questions.</span></h3>
+          <p>Help us tailor your estimate and let us know how you found us.</p>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>Would you like an in-person walkthrough? <span class="req">*</span></label>
+            <p style="font-size: 12px; color: var(--muted); margin-top: -4px; margin-bottom: 4px; line-height: 1.6;">
+              The $70 walkthrough fee counts against any booked job invoiced $400+.
+            </p>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="walkthrough" value="Online estimate" />
+                <div class="radio-label">
+                  <strong>Online Estimate Works for Me</strong>
+                  <span class="price">No Cost</span>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="walkthrough" value="In-person walkthrough" />
+                <div class="radio-label">
+                  <strong>I'd Like an In-Person Walkthrough</strong>
+                  <span class="price">$70</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label>How did you find GG Handyman Solutions? <span class="req">*</span></label>
+            <select name="source">
+              <option value="">- Select -</option>
+              <option>Instagram</option>
+              <option>Google Search</option>
+              <option>Google Maps Search</option>
+              <option>Google Ad</option>
+              <option>Facebook Recommendation</option>
+              <option>Word of Mouth Referral</option>
+              <option>Saw Our Flyers</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-prev" data-prev="4">← Back</button>
+          <button type="submit" class="btn-submit">Submit Request</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="formSuccess">
+        <div class="check-circle">✓</div>
+        <h3>Request <span style="color:var(--gold)">Received</span></h3>
+        <p>Thank you for reaching out to GG Handyman Solutions. Our team will review your request and get back to you within 24 hours with a quote.</p>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-big">GG HANDYMAN</div>
+      <p>Licensed and insured handyman services in Houston, TX. Quality craftsmanship, clear communication, and care in every job we do.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="https://gghandymansolutions.com/search">Search</a></li>
+        <li><a href="https://gghandymansolutions.com/pages/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://gghandymansolutions.com/pages/refund-policy">Refund Policy</a></li>
+        <li><a href="https://gghandymansolutions.com/pages/terms-of-service">Terms of Service</a></li>
+        <li><a href="https://gghandymansolutions.com/pages/contact">Contact us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="https://gghandymansolutions.com/pages/contact">Book a Service</a></li>
+        <li><a href="#reviews">Read Reviews</a></li>
+        <li><a href="#service-area">Service Area</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 GG Operations LLC · All rights reserved</p>
+    <div class="social">
+      <a href="#" aria-label="Facebook">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://share.google/nGDZRsdjf3jk0lC5C" aria-label="Google Reviews" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 48 48"><path fill="currentColor" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.2 7.9 3l5.7-5.7C34 6 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.7-.4-3.9z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* SCROLL-DRIVEN MORPH */
+const hero       = document.querySelector('.hero');
+const logoStage  = document.getElementById('logoStage');
+const logoCard   = document.getElementById('logoCard');
+const logoGlow   = document.getElementById('logoGlow');
+const teamBg     = document.getElementById('teamBg');
+const topText    = document.getElementById('topText');
+const bottomText = document.getElementById('bottomText');
+const scrollHint = document.getElementById('scrollHint');
+
+const lerp = (a, b, t) => a + (b - a) * t;
+const clamp01 = v => Math.max(0, Math.min(1, v));
+const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+let ticking = false;
+function updateMorph() {
+  const rect = hero.getBoundingClientRect();
+  const total = rect.height - window.innerHeight;
+  const scrolled = -rect.top;
+  const pRaw = clamp01(scrolled / total);
+  const p = ease(pRaw);
+
+  const scale  = lerp(1, 0.32, p);
+  const ty     = lerp(0, 110, p);
+  const tx     = lerp(0, -20, p);
+  const rotY   = lerp(0, 14, p);
+  const rotX   = lerp(0, -6, p);
+  const radius = lerp(28, 200, p);
+
+  logoStage.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale}) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+  logoCard.style.borderRadius = `${radius}px`;
+  logoGlow.style.opacity = lerp(0.7, 0.95, Math.sin(p * Math.PI));
+  teamBg.style.opacity = lerp(0, 1, clamp01(pRaw * 1.2));
+  teamBg.style.transform = `scale(${lerp(1.15, 1.0, p)})`;
+  topText.style.opacity = lerp(1, 0, clamp01(pRaw * 1.6));
+  topText.style.transform = `translate(-50%, ${lerp(0, -40, pRaw)}px)`;
+  const bp = clamp01((pRaw - 0.6) / 0.4);
+  bottomText.style.opacity = bp;
+  bottomText.style.transform = `translate(-50%, ${lerp(20, 0, bp)}px)`;
+  scrollHint.style.opacity = lerp(0.6, 0, clamp01(pRaw * 4));
+  ticking = false;
+}
+window.addEventListener('scroll', () => {
+  if (!ticking) { requestAnimationFrame(updateMorph); ticking = true; }
+}, { passive: true });
+window.addEventListener('resize', updateMorph);
+updateMorph();
+
+/* PHOTO LOADER — swap data-src="" to your image URL on any .about-photo or .mission-img */
+document.querySelectorAll('[data-src]').forEach(el => {
+  const src = el.getAttribute('data-src');
+  if (src && src.trim() !== '') {
+    el.style.backgroundImage = `url('${src}')`;
+    el.setAttribute('data-loaded', 'true');
+  }
+});
+
+/* ============== MULTI-STEP CONTACT FORM ============== */
+
+// Country list
+const COUNTRIES = ["Afghanistan","Aland Islands","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antarctica","Antigua And Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia And Herzegovina","Botswana","Bouvet Island","Brazil","British Indian Ocean Territory","Brunei Darussalam","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central African Republic","Chad","Chile","China","Christmas Island","Cocos (Keeling) Islands","Colombia","Comoros","Congo","Congo, Democratic Republic","Cook Islands","Costa Rica","Cote D'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands (Malvinas)","Faroe Islands","Fiji","Finland","France","French Guiana","French Polynesia","French Southern Territories","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guadeloupe","Guam","Guatemala","Guernsey","Guinea","Guinea-Bissau","Guyana","Haiti","Heard Island & Mcdonald Islands","Holy See (Vatican City State)","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran, Islamic Republic Of","Iraq","Ireland","Isle Of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Korea","Kuwait","Kyrgyzstan","Lao People's Democratic Republic","Latvia","Lebanon","Lesotho","Liberia","Libyan Arab Jamahiriya","Liechtenstein","Lithuania","Luxembourg","Macao","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Martinique","Mauritania","Mauritius","Mayotte","Mexico","Micronesia, Federated States Of","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Niue","Norfolk Island","Northern Mariana Islands","Norway","Oman","Pakistan","Palau","Palestinian Territory, Occupied","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Pitcairn","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russian Federation","Rwanda","Saint Barthelemy","Saint Helena","Saint Kitts And Nevis","Saint Lucia","Saint Martin","Saint Pierre And Miquelon","Saint Vincent And Grenadines","Samoa","San Marino","Sao Tome And Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Georgia And Sandwich Isl.","Spain","Sri Lanka","Sudan","Suriname","Svalbard And Jan Mayen","Swaziland","Sweden","Switzerland","Syrian Arab Republic","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tokelau","Tonga","Trinidad And Tobago","Tunisia","Turkey","Turkmenistan","Turks And Caicos Islands","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","United States Outlying Islands","Uruguay","Uzbekistan","Vanuatu","Venezuela","Viet Nam","Virgin Islands, British","Virgin Islands, U.S.","Wallis And Futuna","Western Sahara","Yemen","Zambia","Zimbabwe"];
+
+// Phone country codes (most relevant first)
+const PHONE_CODES = [
+  ["United States","+1"],["Canada","+1"],["Mexico","+52"],["United Kingdom","+44"],
+  ["Afghanistan","+93"],["Albania","+355"],["Algeria","+213"],["Andorra","+376"],["Angola","+244"],
+  ["Argentina","+54"],["Armenia","+374"],["Australia","+61"],["Austria","+43"],["Azerbaijan","+994"],
+  ["Bahamas","+1242"],["Bahrain","+973"],["Bangladesh","+880"],["Barbados","+1246"],["Belarus","+375"],
+  ["Belgium","+32"],["Belize","+501"],["Benin","+229"],["Bermuda","+1441"],["Bhutan","+975"],
+  ["Bolivia","+591"],["Bosnia and Herzegovina","+387"],["Botswana","+267"],["Brazil","+55"],
+  ["Brunei","+673"],["Bulgaria","+359"],["Burkina Faso","+226"],["Burundi","+257"],["Cambodia","+855"],
+  ["Cameroon","+237"],["Cape Verde","+238"],["Cayman Islands","+1345"],["Central African Republic","+236"],
+  ["Chad","+235"],["Chile","+56"],["China","+86"],["Colombia","+57"],["Comoros","+269"],
+  ["Costa Rica","+506"],["Croatia","+385"],["Cuba","+53"],["Cyprus","+357"],["Czech Republic","+420"],
+  ["Denmark","+45"],["Djibouti","+253"],["Dominica","+1767"],["Dominican Republic","+1809"],
+  ["Ecuador","+593"],["Egypt","+20"],["El Salvador","+503"],["Equatorial Guinea","+240"],["Eritrea","+291"],
+  ["Estonia","+372"],["Ethiopia","+251"],["Fiji","+679"],["Finland","+358"],["France","+33"],
+  ["French Guiana","+594"],["French Polynesia","+689"],["Gabon","+241"],["Gambia","+220"],["Georgia","+995"],
+  ["Germany","+49"],["Ghana","+233"],["Gibraltar","+350"],["Greece","+30"],["Greenland","+299"],
+  ["Grenada","+1473"],["Guadeloupe","+590"],["Guam","+1671"],["Guatemala","+502"],["Guinea","+224"],
+  ["Guinea-Bissau","+245"],["Guyana","+592"],["Haiti","+509"],["Honduras","+504"],["Hong Kong","+852"],
+  ["Hungary","+36"],["Iceland","+354"],["India","+91"],["Indonesia","+62"],["Iran","+98"],["Iraq","+964"],
+  ["Ireland","+353"],["Israel","+972"],["Italy","+39"],["Jamaica","+1876"],["Japan","+81"],["Jordan","+962"],
+  ["Kazakhstan","+7"],["Kenya","+254"],["Kuwait","+965"],["Kyrgyzstan","+996"],["Laos","+856"],["Latvia","+371"],
+  ["Lebanon","+961"],["Lesotho","+266"],["Liberia","+231"],["Libya","+218"],["Liechtenstein","+423"],
+  ["Lithuania","+370"],["Luxembourg","+352"],["Macao","+853"],["Macedonia","+389"],["Madagascar","+261"],
+  ["Malawi","+265"],["Malaysia","+60"],["Maldives","+960"],["Mali","+223"],["Malta","+356"],
+  ["Marshall Islands","+692"],["Martinique","+596"],["Mauritania","+222"],["Mauritius","+230"],
+  ["Moldova","+373"],["Monaco","+377"],["Mongolia","+976"],["Montenegro","+382"],["Morocco","+212"],
+  ["Mozambique","+258"],["Myanmar","+95"],["Namibia","+264"],["Nauru","+674"],["Nepal","+977"],
+  ["Netherlands","+31"],["New Caledonia","+687"],["New Zealand","+64"],["Nicaragua","+505"],["Niger","+227"],
+  ["Nigeria","+234"],["North Korea","+850"],["Norway","+47"],["Oman","+968"],["Pakistan","+92"],["Palau","+680"],
+  ["Panama","+507"],["Papua New Guinea","+675"],["Paraguay","+595"],["Peru","+51"],["Philippines","+63"],
+  ["Poland","+48"],["Portugal","+351"],["Puerto Rico","+1787"],["Qatar","+974"],["Reunion","+262"],
+  ["Romania","+40"],["Russia","+7"],["Rwanda","+250"],["Saint Lucia","+1758"],["Samoa","+684"],
+  ["San Marino","+378"],["Saudi Arabia","+966"],["Senegal","+221"],["Serbia","+381"],["Seychelles","+248"],
+  ["Sierra Leone","+232"],["Singapore","+65"],["Slovakia","+421"],["Slovenia","+386"],["Somalia","+252"],
+  ["South Africa","+27"],["South Korea","+82"],["South Sudan","+211"],["Spain","+34"],["Sri Lanka","+94"],
+  ["Sudan","+249"],["Suriname","+597"],["Swaziland","+268"],["Sweden","+46"],["Switzerland","+41"],
+  ["Syria","+963"],["Taiwan","+886"],["Tajikistan","+992"],["Tanzania","+255"],["Thailand","+66"],
+  ["Togo","+228"],["Tonga","+676"],["Trinidad And Tobago","+1868"],["Tunisia","+216"],["Turkey","+90"],
+  ["Turkmenistan","+993"],["Tuvalu","+688"],["Uganda","+256"],["Ukraine","+380"],["United Arab Emirates","+971"],
+  ["Uruguay","+598"],["Uzbekistan","+998"],["Vanuatu","+678"],["Venezuela","+58"],["Vietnam","+84"],
+  ["Yemen","+967"],["Zambia","+260"],["Zimbabwe","+263"]
+];
+
+// Populate country dropdown
+const countrySelect = document.getElementById('countrySelect');
+COUNTRIES.forEach(c => {
+  const opt = document.createElement('option');
+  opt.value = c; opt.textContent = c;
+  countrySelect.appendChild(opt);
+});
+countrySelect.value = "United States";
+
+// Populate phone code dropdown
+const phoneCountryCode = document.getElementById('phoneCountryCode');
+PHONE_CODES.forEach(([name, code]) => {
+  const opt = document.createElement('option');
+  opt.value = code; opt.textContent = `${code}  ${name}`;
+  phoneCountryCode.appendChild(opt);
+});
+phoneCountryCode.value = "+1";
+
+// Service tile selection (multi-select)
+const selectedServices = new Set();
+document.querySelectorAll('.service-tile').forEach(tile => {
+  tile.addEventListener('click', () => {
+    const svc = tile.getAttribute('data-service');
+    if (selectedServices.has(svc)) {
+      selectedServices.delete(svc);
+      tile.classList.remove('selected');
+    } else {
+      selectedServices.add(svc);
+      tile.classList.add('selected');
+    }
+    document.getElementById('servicesInput').value = [...selectedServices].join(', ');
+  });
+});
+
+// File upload list
+const fileInput = document.getElementById('fileInput');
+const fileList = document.getElementById('fileList');
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length === 0) { fileList.textContent = ''; return; }
+  fileList.textContent = `${fileInput.files.length} file(s) selected: ` +
+    [...fileInput.files].map(f => f.name).join(', ');
+});
+
+// Step navigation
+const steps = document.querySelectorAll('.form-step');
+const progress = document.getElementById('formProgress');
+const progressSteps = document.querySelectorAll('.progress-step');
+
+function goToStep(n) {
+  steps.forEach(s => s.classList.remove('active'));
+  document.querySelector(`.form-step[data-step="${n}"]`).classList.add('active');
+  progress.setAttribute('data-step', n);
+  progressSteps.forEach(p => {
+    const sNum = parseInt(p.getAttribute('data-step'));
+    p.classList.remove('active', 'complete');
+    if (sNum < n) p.classList.add('complete');
+    if (sNum === n) p.classList.add('active');
+  });
+  // Smooth scroll back up to the form
+  document.querySelector('.form-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Validation per step
+function validateStep(n) {
+  if (n === 1) {
+    if (selectedServices.size === 0) {
+      alert('Please select at least one service.');
+      return false;
+    }
+  }
+  if (n === 2) {
+    const email = document.querySelector('[name="email"]').value.trim();
+    const phone = document.querySelector('[name="phone"]').value.trim();
+    if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return false; }
+    if (!phone) { alert('Please enter your phone number.'); return false; }
+  }
+  if (n === 3) {
+    if (!document.querySelector('[name="address1"]').value.trim()) {
+      alert('Please enter the work site address.'); return false;
+    }
+  }
+  if (n === 4) {
+    if (!document.querySelector('[name="description"]').value.trim()) {
+      alert('Please describe the work needed.'); return false;
+    }
+    if (!document.querySelector('[name="timeframe"]:checked')) {
+      alert('Please select a timeframe.'); return false;
+    }
+  }
+  return true;
+}
+
+document.querySelectorAll('.btn-next').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const next = parseInt(btn.getAttribute('data-next'));
+    if (!validateStep(next - 1)) return;
+    goToStep(next);
+  });
+});
+document.querySelectorAll('.btn-prev').forEach(btn => {
+  btn.addEventListener('click', () => goToStep(parseInt(btn.getAttribute('data-prev'))));
+});
+
+// Submit
+document.getElementById('contactForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!document.querySelector('[name="walkthrough"]:checked')) {
+    alert('Please select a walkthrough preference.'); return;
+  }
+  if (!document.querySelector('[name="source"]').value) {
+    alert('Please tell us how you found us.'); return;
+  }
+
+  const submitBtn = document.querySelector('.btn-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  // Build form data for Web3Forms
+  const formData = new FormData(e.target);
+  formData.set('services', [...selectedServices].join(', '));
+
+  // ⚠️ REPLACE THIS WITH YOUR REAL WEB3FORMS ACCESS KEY ⚠️
+  // Get yours free at https://web3forms.com — takes 30 seconds
+  formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY_HERE');
+  formData.append('subject', 'New Quote Request — GG Handyman Solutions');
+  formData.append('from_name', 'GG Handyman Website');
+
+  // Build a readable email body
+  const data = Object.fromEntries(formData);
+  const emailBody = `
+NEW QUOTE REQUEST
+=================
+
+SERVICES NEEDED: ${data.services || '(none)'}
+
+CONTACT
+-------
+Name: ${data.firstName || ''} ${data.lastName || ''}
+Email: ${data.email || ''}
+Phone: ${data.phoneCountryCode || ''} ${data.phone || ''}
+SMS Opt-in: ${data.smsOptIn ? 'YES' : 'No'}
+
+ADDRESS
+-------
+${data.address1 || ''}
+${data.address2 || ''}
+${data.city || ''}, ${data.province || ''} ${data.zip || ''}
+${data.country || ''}
+
+PROJECT DETAILS
+---------------
+Description: ${data.description || ''}
+
+Timeframe: ${data.timeframe || ''}
+
+Additional info: ${data.additionalInfo || '(none)'}
+
+PREFERENCES
+-----------
+Walkthrough: ${data.walkthrough || ''}
+Found us via: ${data.source || ''}
+  `.trim();
+  formData.append('message', emailBody);
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+
+    if (result.success) {
+      // Show success screen
+      steps.forEach(s => s.classList.remove('active'));
+      document.getElementById('formProgress').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('active');
+      document.querySelector('.form-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      throw new Error(result.message || 'Submission failed');
+    }
+  } catch (err) {
+    alert('Sorry, there was an error sending your request. Please try again or call us directly.');
+    console.error('Form submission error:', err);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Request';
+  }
+});
+</script>
+
+</body>
+</html>
