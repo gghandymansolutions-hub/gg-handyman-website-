@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — GG Handyman Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #ffffff;
+  --bg-1: #f6f5f1;
+  --bg-2: #ececec;
+  --gold: #b8860b;
+  --gold-soft: #d4a017;
+  --ink: #0c0c0e;
+  --line: rgba(12,12,14,0.10);
+  --text: #1a1a1c;
+  --muted: #5a5a60;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 48px;
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.80);
+  border-bottom: 1px solid var(--line);
+}
+nav .brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.18em; font-size: 18px; color: var(--gold); -webkit-text-stroke: 0.4px #1a1a1c; }
+nav .brand span { color: var(--text); -webkit-text-stroke: 0; }
+nav ul { display: flex; gap: 36px; list-style: none; }
+nav ul a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; opacity: 0.80; transition: opacity 0.25s, color 0.25s; }
+nav ul a:hover { opacity: 1; color: var(--gold); }
+nav .cta {
+  background: var(--gold); color: #fff; padding: 10px 22px;
+  border-radius: 999px; font-weight: 600; font-size: 13px;
+  text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
+}
+nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(184,134,11,0.40); }
+@media (max-width: 768px) { nav { padding: 16px 20px; } nav ul { display: none; } }
+
+/* POLICY */
+main.policy {
+  flex: 1; padding: 80px 48px 120px;
+  max-width: 920px; margin: 0 auto; width: 100%;
+}
+.policy .eyebrow {
+  font-size: 11px; letter-spacing: 0.5em; color: var(--gold);
+  -webkit-text-stroke: 0.5px #1a1a1c;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 18px;
+}
+.policy h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(46px, 7vw, 96px);
+  letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 14px;
+  color: var(--text);
+}
+.policy h1 .accent {
+  color: var(--gold);
+  -webkit-text-stroke: 0.7px #1a1a1c;
+  text-stroke: 0.7px #1a1a1c;
+}
+.policy .updated { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 50px; }
+.policy h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 2.6vw, 32px);
+  letter-spacing: 0.04em; color: var(--text);
+  margin-top: 48px; margin-bottom: 14px;
+}
+.policy p { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 18px; font-weight: 400; }
+.policy p strong { color: var(--gold); -webkit-text-stroke: 0.4px #1a1a1c; font-weight: 600; }
+.policy ul { margin: 0 0 18px 22px; padding: 0; }
+.policy ul li { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 6px; }
+.policy a { color: var(--gold); -webkit-text-stroke: 0.4px #1a1a1c; text-decoration: none; font-weight: 600; }
+.policy a:hover { text-decoration: underline; }
+.policy .back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 60px; padding: 12px 22px;
+  background: var(--gold); color: #fff;
+  -webkit-text-fill-color: #fff; -webkit-text-stroke: 0;
+  border-radius: 999px; font-weight: 600; font-size: 14px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.policy .back-link:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(184,134,11,0.40); text-decoration: none; }
+
+/* FOOTER */
+footer { background: #1a1a1c; color: #e8e8ea; padding: 60px 48px 24px; }
+.footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 60px; padding-bottom: 40px; }
+.footer-brand .brand-big { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.08em; color: #f5c518; margin-bottom: 14px; line-height: 1; }
+.footer-brand p { color: #8a8a93; font-size: 14px; line-height: 1.7; max-width: 380px; }
+.footer-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.2em; color: #e8e8ea; margin-bottom: 22px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul a { color: #8a8a93; text-decoration: none; font-size: 14px; transition: color 0.25s; }
+.footer-col ul a:hover { color: #f5c518; }
+.footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.10); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-bottom p { color: #8a8a93; font-size: 12px; letter-spacing: 0.05em; }
+.footer-bottom .social { display: flex; gap: 12px; }
+.footer-bottom .social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.10);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #8a8a93; text-decoration: none; transition: all 0.25s;
+}
+.footer-bottom .social a:hover { border-color: #f5c518; color: #f5c518; }
+@media (max-width: 768px) {
+  main.policy { padding: 50px 20px 80px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 50px 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" style="text-decoration:none"><div class="brand">GG <span>HANDYMAN SOLUTIONS</span></div></a>
+  <ul>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#reviews">Reviews</a></li>
+    <li><a href="/#service-area">Service Area</a></li>
+  </ul>
+  <a href="/#book" class="cta">Book Now</a>
+</nav>
+
+<main class="policy">
+  <div class="eyebrow">Legal</div>
+  <h1><span class="accent">Privacy</span> Policy</h1>
+  <p class="updated">Last revised: 2026</p>
+
+  <p>At <strong>GG Handyman Solutions</strong>, we are committed to protecting your privacy and personal information. This policy outlines the measures we take to safeguard your data when you visit our website, engage our services, or contact us in any way.</p>
+
+  <h2>Information we collect</h2>
+  <p>We may collect and store personal information that you provide us, such as your name, address, phone number, and email address. We use this information to provide you with our services, respond to your inquiries, and keep you informed of updates and promotions.</p>
+  <p>We also collect non-personal information, such as your IP address, browser type, and device information, to improve our website's functionality and user experience. We may use cookies and other tracking technologies to enhance your browsing experience and gather statistical data on how our website is used.</p>
+
+  <h2>How we use your information</h2>
+  <p>We use your personal information only for the purposes stated in this policy or as required by law. We may use your information to:</p>
+  <ul>
+    <li>Provide our services to you</li>
+    <li>Respond to your inquiries and requests</li>
+    <li>Process payments and invoices</li>
+    <li>Send you promotional materials and updates</li>
+    <li>Monitor and improve our website and services</li>
+  </ul>
+  <p>We may share your personal information with our third-party service providers, such as payment processors and marketing partners, only as necessary to provide our services to you. We do not sell or rent your information to third parties.</p>
+
+  <h2>Data security</h2>
+  <p>We take reasonable measures to protect your personal information from unauthorized access, disclosure, or alteration. We use secure servers, encryption, and other security protocols to safeguard your data. However, no data transmission over the internet is completely secure, and we cannot guarantee the security of your information.</p>
+
+  <h2>Your rights</h2>
+  <p>You have the right to access, modify, or delete your personal information that we hold. You may also request that we restrict or object to the processing of your data, or withdraw your consent to receive marketing communications from us. To exercise your rights, please contact us at <a href="mailto:gghandymansolutions@gmail.com">gghandymansolutions@gmail.com</a>.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy from time to time to reflect changes in our practices or legal requirements. We will post the revised policy on our website with the date of last revision. By continuing to use our website or services after the revisions are in effect, you agree to the updated policy.</p>
+
+  <h2>Contact us</h2>
+  <p>If you have any questions or concerns about our privacy policy or data practices, please contact us at <a href="mailto:gghandymansolutions@gmail.com">gghandymansolutions@gmail.com</a>. We will do our best to address your inquiry as soon as possible.</p>
+
+  <a href="/" class="back-link">← Back to home</a>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-big">GG HANDYMAN SOLUTIONS</div>
+      <p>Licensed and insured handyman services in Houston, TX. Quality craftsmanship, clear communication, and care in every job we do.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/#book">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="/#book">Book a Service</a></li>
+        <li><a href="/#reviews">Read Reviews</a></li>
+        <li><a href="/#service-area">Service Area</a></li>
+        <li><a href="/#about">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GG Handyman Solutions LLC · All rights reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>
