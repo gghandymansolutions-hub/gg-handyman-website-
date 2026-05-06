@@ -120,6 +120,37 @@ nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,19
   letter-spacing: 0.04em; line-height: 0.95; color: var(--text);
 }
 .hero-text.top .accent { color: var(--gold); }
+.hero-text.top .accent-mustard {
+  color: #b8860b;
+  -webkit-text-stroke: 0.7px #1a1a1c;
+  text-stroke: 0.7px #1a1a1c;
+}
+.hero-tagline-mobile { display: none; }
+
+/* Side taglines crossing through the logo on desktop */
+.hero-side {
+  position: absolute; top: 50%; transform: translate(0, -50%);
+  z-index: 2; /* below logo (z=3) so logo masks any overlap */
+  pointer-events: none; white-space: nowrap;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6.5vw, 86px);
+  letter-spacing: 0.04em; line-height: 0.95;
+  color: var(--text);
+  will-change: opacity, transform;
+}
+.hero-side-left { right: 50%; padding-right: 16px; text-align: right; }
+.hero-side-right { left: 50%; padding-left: 16px; text-align: left; }
+.hero-side .accent { color: var(--gold); }
+.hero-side .accent-mustard {
+  color: #b8860b;
+  -webkit-text-stroke: 0.7px #1a1a1c;
+  text-stroke: 0.7px #1a1a1c;
+}
+
+@media (max-width: 768px) {
+  .hero-side { display: none; }
+  .hero-tagline-mobile { display: block; }
+}
 .hero-text.top .small {
   display: block; font-family: 'Manrope', sans-serif; font-weight: 300;
   font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.4em;
@@ -769,9 +800,12 @@ footer { background: var(--bg-1); padding: 80px 48px 30px; border-top: 1px solid
 
     <div class="hero-text top" id="topText">
       <span class="small">GG HANDYMAN SOLUTIONS LLC · HOUSTON, TX</span>
-      <div>REAL <span class="accent">SOLUTIONS</span></div>
-      <div>FOR YOUR HOME</div>
+      <div class="hero-tagline-mobile">FOR YOUR <span class="accent-mustard">HOME</span></div>
+      <div class="hero-tagline-mobile">REAL <span class="accent">SOLUTIONS</span></div>
     </div>
+
+    <div class="hero-side hero-side-left" id="taglineLeft">FOR YOUR <span class="accent-mustard">HOME</span></div>
+    <div class="hero-side hero-side-right" id="taglineRight">REAL <span class="accent">SOLUTIONS</span></div>
 
     <div class="logo-stage" id="logoStage">
       <div class="logo-glow" id="logoGlow"></div>
@@ -1330,6 +1364,8 @@ const teamBg     = document.getElementById('teamBg');
 const topText    = document.getElementById('topText');
 const bottomText = document.getElementById('bottomText');
 const scrollHint = document.getElementById('scrollHint');
+const taglineL   = document.getElementById('taglineLeft');
+const taglineR   = document.getElementById('taglineRight');
 
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp01 = v => Math.max(0, Math.min(1, v));
@@ -1355,8 +1391,13 @@ function updateMorph() {
   logoGlow.style.opacity = lerp(0.7, 0.95, Math.sin(p * Math.PI));
   teamBg.style.opacity = lerp(0, 1, clamp01(pRaw * 1.2));
   teamBg.style.transform = `scale(${lerp(1.15, 1.0, p)})`;
-  topText.style.opacity = lerp(1, 0, clamp01(pRaw * 1.6));
+  const fadeOut = lerp(1, 0, clamp01(pRaw * 1.6));
+  topText.style.opacity = fadeOut;
   topText.style.transform = `translate(-50%, ${lerp(0, -40, pRaw)}px)`;
+  taglineL.style.opacity = fadeOut;
+  taglineR.style.opacity = fadeOut;
+  taglineL.style.transform = `translate(${lerp(0, -50, pRaw)}px, -50%)`;
+  taglineR.style.transform = `translate(${lerp(0, 50, pRaw)}px, -50%)`;
   const bp = clamp01((pRaw - 0.6) / 0.4);
   bottomText.style.opacity = bp;
   bottomText.style.transform = `translate(-50%, ${lerp(20, 0, bp)}px)`;
