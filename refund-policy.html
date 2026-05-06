@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Refund Policy — GG Handyman Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #ffffff;
+  --bg-1: #f6f5f1;
+  --bg-2: #ececec;
+  --gold: #b8860b;
+  --gold-soft: #d4a017;
+  --ink: #0c0c0e;
+  --line: rgba(12,12,14,0.10);
+  --text: #1a1a1c;
+  --muted: #5a5a60;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 48px;
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.80);
+  border-bottom: 1px solid var(--line);
+}
+nav .brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.18em; font-size: 18px; color: var(--gold); -webkit-text-stroke: 0.4px #1a1a1c; }
+nav .brand span { color: var(--text); -webkit-text-stroke: 0; }
+nav ul { display: flex; gap: 36px; list-style: none; }
+nav ul a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; opacity: 0.80; transition: opacity 0.25s, color 0.25s; }
+nav ul a:hover { opacity: 1; color: var(--gold); }
+nav .cta {
+  background: var(--gold); color: #fff; padding: 10px 22px;
+  border-radius: 999px; font-weight: 600; font-size: 13px;
+  text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
+}
+nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(184,134,11,0.40); }
+@media (max-width: 768px) { nav { padding: 16px 20px; } nav ul { display: none; } }
+
+main.policy {
+  flex: 1; padding: 80px 48px 120px;
+  max-width: 920px; margin: 0 auto; width: 100%;
+}
+.policy .eyebrow {
+  font-size: 11px; letter-spacing: 0.5em; color: var(--gold);
+  -webkit-text-stroke: 0.5px #1a1a1c;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 18px;
+}
+.policy h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(46px, 7vw, 96px);
+  letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 14px;
+  color: var(--text);
+}
+.policy h1 .accent {
+  color: var(--gold);
+  -webkit-text-stroke: 0.7px #1a1a1c;
+  text-stroke: 0.7px #1a1a1c;
+}
+.policy .updated { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 50px; }
+.policy h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 2.6vw, 32px);
+  letter-spacing: 0.04em; color: var(--text);
+  margin-top: 48px; margin-bottom: 14px;
+}
+.policy p { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 18px; font-weight: 400; }
+.policy p strong { color: var(--gold); -webkit-text-stroke: 0.4px #1a1a1c; font-weight: 600; }
+.policy ul { margin: 0 0 18px 22px; padding: 0; }
+.policy ul li { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 6px; }
+.policy a { color: var(--gold); -webkit-text-stroke: 0.4px #1a1a1c; text-decoration: none; font-weight: 600; }
+.policy a:hover { text-decoration: underline; }
+.policy .back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 60px; padding: 12px 22px;
+  background: var(--gold); color: #fff;
+  -webkit-text-fill-color: #fff; -webkit-text-stroke: 0;
+  border-radius: 999px; font-weight: 600; font-size: 14px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.policy .back-link:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(184,134,11,0.40); text-decoration: none; }
+
+footer { background: #1a1a1c; color: #e8e8ea; padding: 60px 48px 24px; }
+.footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 60px; padding-bottom: 40px; }
+.footer-brand .brand-big { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.08em; color: #f5c518; margin-bottom: 14px; line-height: 1; }
+.footer-brand p { color: #8a8a93; font-size: 14px; line-height: 1.7; max-width: 380px; }
+.footer-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.2em; color: #e8e8ea; margin-bottom: 22px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul a { color: #8a8a93; text-decoration: none; font-size: 14px; transition: color 0.25s; }
+.footer-col ul a:hover { color: #f5c518; }
+.footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.10); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-bottom p { color: #8a8a93; font-size: 12px; letter-spacing: 0.05em; }
+@media (max-width: 768px) {
+  main.policy { padding: 50px 20px 80px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 50px 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" style="text-decoration:none"><div class="brand">GG <span>HANDYMAN SOLUTIONS</span></div></a>
+  <ul>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#reviews">Reviews</a></li>
+    <li><a href="/#service-area">Service Area</a></li>
+  </ul>
+  <a href="/#book" class="cta">Book Now</a>
+</nav>
+
+<main class="policy">
+  <div class="eyebrow">Legal</div>
+  <h1><span class="accent">Refund</span> Policy</h1>
+  <p class="updated">Last revised: 2026</p>
+
+  <p>At <strong>GG Handyman Solutions</strong>, we strive to provide high-quality home maintenance and repair services to our clients. If you are dissatisfied with our services, we offer a refund under certain circumstances, as outlined below.</p>
+
+  <h2>Refund eligibility</h2>
+  <p>Refunds are only available if you cancel your service appointment prior to the scheduled date and time. If we are unable to complete the work due to unforeseen circumstances, we will reschedule the appointment at no extra cost or issue a refund.</p>
+  <p>Once the work has been completed, refunds are not available. We stand behind the quality of our services and will work with you to resolve any issues that arise after the work is completed, but we cannot offer a refund for services that have already been rendered.</p>
+
+  <h2>How to request a refund</h2>
+  <p>To request a refund, please contact us at <a href="mailto:gghandymansolutions@gmail.com">gghandymansolutions@gmail.com</a> or call our office at <a href="tel:+13465049726">(346) 504-9726</a>. We will review your request and determine your eligibility for a refund.</p>
+
+  <h2>Refund processing</h2>
+  <p>If you are eligible for a refund, we will process your refund within 5–10 business days. We will refund the original payment method used for the transaction, unless otherwise agreed upon.</p>
+
+  <p>If you have any questions or concerns about our refund policy, please contact us at <a href="mailto:gghandymansolutions@gmail.com">gghandymansolutions@gmail.com</a> or call our office at <a href="tel:+13465049726">(346) 504-9726</a>. We will do our best to address your inquiry as soon as possible.</p>
+
+  <a href="/" class="back-link">← Back to home</a>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-big">GG HANDYMAN SOLUTIONS</div>
+      <p>Licensed and insured handyman services in Houston, TX. Quality craftsmanship, clear communication, and care in every job we do.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/refund-policy">Refund Policy</a></li>
+        <li><a href="/terms-of-service">Terms of Service</a></li>
+        <li><a href="/#book">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="/#book">Book a Service</a></li>
+        <li><a href="/#reviews">Read Reviews</a></li>
+        <li><a href="/#service-area">Service Area</a></li>
+        <li><a href="/#about">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GG Handyman Solutions LLC · All rights reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>
