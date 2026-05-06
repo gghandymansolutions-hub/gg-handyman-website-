@@ -127,19 +127,19 @@ nav .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,19
 }
 .hero-tagline-mobile { display: none; }
 
-/* Side taglines crossing through the logo on desktop */
+/* Side taglines flanking the logo on desktop, in front */
 .hero-side {
   position: absolute; top: 50%; transform: translate(0, -50%);
-  z-index: 2; /* below logo (z=3) so logo masks any overlap */
+  z-index: 4; /* above logo (z=3) */
   pointer-events: none; white-space: nowrap;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(40px, 6.5vw, 86px);
+  font-size: clamp(36px, 5.5vw, 72px);
   letter-spacing: 0.04em; line-height: 0.95;
   color: var(--text);
   will-change: opacity, transform;
 }
-.hero-side-left { right: 50%; padding-right: 16px; text-align: right; }
-.hero-side-right { left: 50%; padding-left: 16px; text-align: left; }
+.hero-side-left { right: 50%; padding-right: clamp(160px, 22vw, 280px); text-align: right; }
+.hero-side-right { left: 50%; padding-left: clamp(160px, 22vw, 280px); text-align: left; }
 .hero-side .accent { color: var(--gold); }
 .hero-side .accent-mustard {
   color: #b8860b;
